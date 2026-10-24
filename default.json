@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "KeesTucker's shared Renovate preset. Each repo's renovate.json: { \"extends\": [\"github>KeesTucker/renovate-config\"] }, plus { \"automerge\": false } where there's no CI to wait for.",
+  "extends": ["config:recommended", ":dependencyDashboard"],
+  "timezone": "Pacific/Auckland",
+  "schedule": ["* 1-5 * * *"],
+  "automergeSchedule": ["* 1-5 * * *"],
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": false,
+  "automergeStrategy": "squash",
+  "ignoreTests": false,
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 0,
+  "packageRules": [
+    {
+      "description": "One PR a week for non-major updates of the same manager",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
+      "groupName": "{{manager}} non-major",
+      "groupSlug": "{{manager}}-non-major"
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "description": "Security fixes skip the age gate and the schedule",
+    "minimumReleaseAge": null,
+    "schedule": ["at any time"],
+    "automergeSchedule": ["at any time"]
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["* 1-5 1 * *"]
+  }
+}
