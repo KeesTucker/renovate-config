@@ -9,7 +9,7 @@
   "internalChecksFilter": "strict",
   "automerge": true,
   "automergeType": "pr",
-  "platformAutomerge": false,
+  "platformAutomerge": true,
   "automergeStrategy": "squash",
   "ignoreTests": false,
   "prConcurrentLimit": 10,
